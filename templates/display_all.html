@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Devices</title>
+</head>
+<body>
+    <div>
+        <p>Displaying All Devices:</p>
+        {% for section in config.sections() %}
+        <table border = 5>
+            <tr>
+                <th>Name</th>
+                <td>{{ section }}</td>
+            </tr>
+            <tr>
+                <th>IP Address</th>
+                <td>{{ config.get(section, 'ip_address') }}</td>
+            </tr>
+            <tr>
+                <th>Latest Command</th>
+                <td>{{ config.get(section, 'latest_command') }}</td>
+            </tr>
+        </table>
+        {% endfor %}
+    </div>
+    <a href = "{{ url_for('home') }}">Home</a>
+</body>
+</html>

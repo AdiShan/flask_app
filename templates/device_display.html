@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }}</title>
+</head>
+<body>
+    <div>
+        <form action = "{{ url_for('device_display', device_name=name) }}" method = "post">
+            <label>IP Address:</label>
+            <p>{{ ipaddress }}</p>
+            <label>Latest Command:</label>
+            <p>{{ command }}</p>
+            <label>New Command</label>
+            <input type = "text" name = "newcommand" maxlength="4" placeholder="4 digit hexadecimal"/>
+            <input name = "button" type = "submit" value = "Send New Command" />
+        </form>
+    </div>
+    <a href = "{{ url_for('home') }}">Home</a>
+</body>
+</html>
