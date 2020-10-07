@@ -8,6 +8,11 @@
     <div>
         <p>Search Using IP Address:</p>
         <form action = "{{ url_for('home') }}" method = "post">
+            <label class="switch">
+                Raspberry Pi Access Point Mode
+                <input type="checkbox" name = "APmode">
+                <span class="slider round"></span>
+            </label>
             <label>IP Address</label>
             <input type = "text" name = "ip" placeholder="x : x : x : x" required/>
             <input name = "button" type = "submit" value = "Search" />

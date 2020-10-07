@@ -67,6 +67,15 @@ def device_display(device_name):
 @app.route('/', methods=['POST', 'GET'])
 def home():
     if request.method == 'POST':
+
+        if request.form['APmode']:
+            print('toggling rpi to ap mode')
+            station_to_ap_mode()
+
+        elif not request.form['APmode']:
+            print('toggling rpi to station mode')
+            ap_to_station_mode()
+
         if request.form['button'] == 'Search':
             print('in ip search')
             ip = request.form['ip']
