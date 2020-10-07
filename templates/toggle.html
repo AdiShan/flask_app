@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <p>Current Mode: {{ mode }}</p>
+        <form action = "{{ url_for('rpi_mode') }}" method = "post">
+            <input name = "button" type = "submit" value = "toggle" />
+        </form>
+    </div>
+</body>
+</html>
