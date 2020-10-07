@@ -1,9 +1,18 @@
 from flask import Flask, redirect, url_for, request, render_template, flash
 import configparser
+import os
 
 app = Flask(__name__)
 config = configparser.ConfigParser()
 config.read('device_info.ini')
+
+
+def station_to_ap_mode():
+    os.system('sh station_to_ap_mode.sh')
+
+
+def ap_to_station_mode():
+    os.system('sh ap_to_station_mode.sh')
 
 
 def fetch_details(ipaddress):
