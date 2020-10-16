@@ -62,15 +62,15 @@ def bt_serialaddr():
 
 
 @app.route('/bt_hostaddr', methods=['GET'])
-def bt_serialaddr():
+def bt_hostaddr():
     with open('hostaddress.txt', 'r') as hostaddress:
         addr = hostaddress.read()
 
     return addr
 
 
-@app.route('/bt_serialaddr', methods=['POST'])
-def bt_serialaddr():
+@app.route('/bt_changeaddr', methods=['POST'])
+def bt_changeaddr():
     addr = request.form['btaddress']  #change according to required API format
     with open('hostaddress.txt', 'w') as hostaddress:
         hostaddress.write(addr)
