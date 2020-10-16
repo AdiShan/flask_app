@@ -31,6 +31,9 @@ def set_current_mode(mode):
         config.set('MODE', 'ap', 'True')
     elif mode == 'Access Point':
         config.set('MODE', 'ap', 'False')
+    
+    with open('device_info.ini', 'w') as configfile:
+        config.write(configfile)
 
 
 @app.route('/rpi_mode', methods=['POST', 'GET'])
@@ -50,5 +53,28 @@ def rpi_mode():
     return render_template('toggle.html', mode=mode)
 
 
+@app.route('/bt_serialaddr', methods=['GET'])
+def bt_serialaddr():
+    with open('serialaddress.txt', 'r') as btaddress:
+        addr = btaddress.read()
+
+    return addr
+
+
+@app.route('/bt_hostaddr', methods=['GET'])
+def bt_serialaddr():
+    with open('hostaddress.txt', 'r') as hostaddress:
+        addr = hostaddress.read()
+
+    return addr
+
+
+@app.route('/bt_serialaddr', methods=['POST'])
+def bt_serialaddr():
+    addr = request.form['btaddress']  #change according to required API format
+    with open('hostaddress.txt', 'w') as hostaddress:
+        hostaddress.write(addr)
+        
+        
 if __name__ == '__main__':
     app.run(debug=True)
